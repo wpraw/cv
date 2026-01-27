@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -280,7 +281,7 @@ export const LaserFlow: React.FC<Props> = ({
   decay = 1.1,
   falloffStart = 1.2,
   fogFallSpeed = 0.6,
-  color = '#FF79C6' //todo: change to --laser-flow-color
+  color
 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -578,7 +579,8 @@ export const LaserFlow: React.FC<Props> = ({
     uniforms.uFalloffStart.value = falloffStart;
     uniforms.uFogFallSpeed.value = fogFallSpeed;
 
-    const { r, g, b } = hexToRGB(color || '#FFFFFF');
+    const cssColor = getComputedStyle(document.documentElement).getPropertyValue('--laser-flow-color').trim();
+    const { r, g, b } = hexToRGB(color || cssColor || '#ffffff');
     uniforms.uColor.value.set(r, g, b);
   }, [
     wispDensity,

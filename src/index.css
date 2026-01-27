@@ -49,7 +49,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --laser-flow-color: oklch(0.7546 0.1831 346.81);
+  --laser-flow-color: #FF79C6;
 }
 
 @media (prefers-color-scheme: light) {

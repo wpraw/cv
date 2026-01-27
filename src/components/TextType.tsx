@@ -1,5 +1,3 @@
-'use client';
-
 import { type ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
 
@@ -150,6 +148,7 @@ const TextType = ({
     }
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     currentCharIndex,
     displayedText,
@@ -178,7 +177,7 @@ const TextType = ({
       ...props
     },
     <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
-      {displayedText}
+      {'{  '}{displayedText}
     </span>,
     showCursor && (
       <span
@@ -187,7 +186,10 @@ const TextType = ({
       >
         {cursorCharacter}
       </span>
-    )
+    ),
+    <span className="inline" style={{ color: getCurrentTextColor() || 'inherit' }}>
+      {' }'}
+    </span>
   );
 };
 
